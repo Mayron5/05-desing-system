@@ -4,6 +4,6 @@ const Button = styled("button", {
   backgroundColor: "$gray100",
 });
 
-export function App() {
+export function ButtonExport() {
   return <Button>Olá</Button>;
 }
