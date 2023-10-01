@@ -1043,6 +1043,12 @@ interface HeadingProps extends ComponentProps$1<typeof Heading> {
     as?: ElementType;
 }
 
+interface MultiStepProps {
+    size: number;
+    currentStep?: number;
+}
+declare function MultiStep({ size, currentStep }: MultiStepProps): react_jsx_runtime.JSX.Element;
+
 declare const Text: _stitches_react_types_styled_component.StyledComponent<"p", {
     size?: "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl" | "9xl" | undefined;
 }, {}, _stitches_react_types_css_util.CSS<{}, {
@@ -1664,4 +1670,4 @@ interface TextInputProps extends ComponentProps<typeof Input> {
 }
 declare function TextInput({ prefix, ...props }: TextInputProps): react_jsx_runtime.JSX.Element;
 
-export { Avatar, AvatarProps, Box, BoxProps, Button, ButtonProps, Checkbox, CheckboxProps, Heading, HeadingProps, Text, TextArea, TextAreaProps, TextInput, TextInputProps, TextProps };
+export { Avatar, AvatarProps, Box, BoxProps, Button, ButtonProps, Checkbox, CheckboxProps, Heading, HeadingProps, MultiStep, MultiStepProps, Text, TextArea, TextAreaProps, TextInput, TextInputProps, TextProps };
