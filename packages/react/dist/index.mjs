@@ -81,6 +81,11 @@ var fontSizes = {
   "8xl": "4.5rem",
   "9xl": "6rem"
 };
+var fontWeights = {
+  regular: "400",
+  medium: "500",
+  bold: "700"
+};
 var fonts = {
   default: "Roboto, sans-serif",
   code: "monospace"
@@ -98,7 +103,7 @@ var { styled, css, globalCss, keyframes, getCssText, theme, createTheme, config 
   theme: {
     colors,
     fontSizes,
-    fontWeights: fontSizes,
+    fontWeights,
     fonts,
     lineHeights,
     radii,
@@ -156,6 +161,80 @@ var Box = styled("div", {
   border: "1px solid $gray600"
 });
 
+// src/components/Button.tsx
+var Button = styled("button", {
+  all: "unset",
+  borderRadius: "$sm",
+  fontSize: "$sm",
+  fontWeight: "$medium",
+  fontFamily: "$default",
+  textAlign: "center",
+  minWidth: 120,
+  boxSizing: "border-box",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "$2",
+  padding: "0 $4",
+  cursor: "pointer",
+  svg: {
+    width: "$4",
+    height: "$4"
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  },
+  variants: {
+    variant: {
+      primary: {
+        color: "$white",
+        backgroundColor: "$ignite500",
+        "&:not(:disabled):hover": {
+          backgroundColor: "$ignite300",
+          transition: "all 300ms"
+        },
+        "&:disabled": {
+          backgroundColor: "$gray200"
+        }
+      },
+      secondary: {
+        color: "$ignite300",
+        border: "2px solid $ignite500",
+        "&:not(:disabled):hover": {
+          backgroundColor: "$ignite500",
+          color: "$white",
+          transition: "all 300ms"
+        },
+        "&:disabled": {
+          color: "$gray200",
+          borderColor: "$gray200"
+        }
+      },
+      tertiary: {
+        color: "$gray100",
+        "&:not(:disabled):hover": {
+          color: "$white"
+        },
+        "&:disabled": {
+          color: "$gray600"
+        }
+      }
+    },
+    size: {
+      sm: {
+        height: 38
+      },
+      md: {
+        height: 46
+      }
+    }
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "md"
+  }
+});
+
 // src/components/Heading.tsx
 var Heading = styled("h2", {
   fontFamily: "$default",
@@ -209,6 +288,7 @@ var Text = styled("p", {
 export {
   Avatar2 as Avatar,
   Box,
+  Button,
   Heading,
   Text
 };
