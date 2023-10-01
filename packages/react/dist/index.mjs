@@ -298,6 +298,35 @@ var Text = styled("p", {
   }
 });
 
+// src/components/TextArea.tsx
+var TextArea = styled("textarea", {
+  all: "unset",
+  backgroundColor: "$gray900",
+  padding: "$3 $4",
+  borderRadius: "$sm",
+  boxSizing: "border-box",
+  border: "2px solid $gray900",
+  fontFamily: "$default",
+  fontSize: "$sm",
+  fontWeight: "$regular",
+  color: "$white",
+  resize: "vertical",
+  minHeight: 80,
+  width: "100%",
+  height: "max-content",
+  "&:focus": {
+    borderColor: "$ignite300",
+    transition: "all 300ms"
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "not-allowed"
+  },
+  "&:placeholder": {
+    color: "$gray500"
+  }
+});
+
 // src/components/TextInput/styles.ts
 var TextInputContainer = styled("div", {
   backgroundColor: "$gray900",
@@ -307,6 +336,7 @@ var TextInputContainer = styled("div", {
   border: "2px solid $gray900",
   display: "flex",
   alignItems: "baseline",
+  cursor: "auto",
   "&:has(input:focus)": {
     borderColor: "$ignite300",
     transition: "all 300ms"
@@ -350,5 +380,6 @@ export {
   Button,
   Heading,
   Text,
+  TextArea,
   TextInput
 };

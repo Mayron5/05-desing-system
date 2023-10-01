@@ -9,6 +9,7 @@ export const TextInputContainer = styled("div", {
 
   display: 'flex',
   alignItems: 'baseline',
+  cursor: 'auto',
 
   '&:has(input:focus)': {
     borderColor: '$ignite300',
