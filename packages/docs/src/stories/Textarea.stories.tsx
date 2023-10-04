@@ -5,6 +5,7 @@ import { Box, Text, TextArea, TextAreaProps } from "@ignite-ui/react";
 export default {
   title: "Form/Textarea",
   component: TextArea,
+  tags: ["autodocs"],
   args: {},
   decorators: [
     (Story) => {
