@@ -131,8 +131,8 @@ var { styled, css, globalCss, keyframes, getCssText, theme, createTheme, config 
 var AvatarContainer = styled(Avatar.Root, {
   borderRadius: "$full",
   display: "inline-block",
-  width: "$12",
-  height: "$12",
+  width: "$16",
+  height: "$16",
   overflow: "hidden"
 });
 var AvatarImage = styled(Avatar.Image, {
@@ -168,7 +168,7 @@ Avatar2.displayName = "Avatar";
 
 // src/components/Box.tsx
 var Box = styled("div", {
-  padding: "$4",
+  padding: "$6",
   borderRadius: "$md",
   backgroundColor: "$gray800",
   border: "1px solid $gray600"
@@ -197,6 +197,9 @@ var Button = styled("button", {
   },
   "&:disabled": {
     cursor: "not-allowed"
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 2px $colors$gray100"
   },
   variants: {
     variant: {
@@ -272,7 +275,7 @@ var CheckboxContainer = styled(Checkbox.Root, {
   '&[data-state="checked"]': {
     backgroundColor: "$ignite300"
   },
-  "&:focus": {
+  '&:focus, &[data-state="checked"]': {
     borderColor: "$ignite300",
     transition: "all 300ms"
   }
@@ -446,15 +449,17 @@ var TextArea = styled("textarea", {
 });
 TextArea.displayName = "TextArea";
 
+// src/components/TextInput/index.tsx
+import { forwardRef } from "react";
+
 // src/components/TextInput/styles.ts
 var TextInputContainer = styled("div", {
   backgroundColor: "$gray900",
-  padding: "$3 $4",
   borderRadius: "$sm",
   boxSizing: "border-box",
   border: "2px solid $gray900",
   display: "flex",
-  alignItems: "baseline",
+  alignItems: "center",
   cursor: "auto",
   "&:has(input:focus)": {
     borderColor: "$ignite300",
@@ -463,6 +468,19 @@ var TextInputContainer = styled("div", {
   "&:has(input:disabled)": {
     opacity: 0.5,
     cursor: "not-allowed"
+  },
+  variants: {
+    size: {
+      sm: {
+        padding: "$2 $3"
+      },
+      md: {
+        padding: "$3 $4"
+      }
+    }
+  },
+  defaultVariants: {
+    size: "md"
   }
 });
 var Prefix = styled("span", {
@@ -479,20 +497,22 @@ var Input = styled("input", {
   fontWeight: "$regular",
   backgroundColor: "transparent",
   width: "100%",
-  "&:placeholder": {
+  "&::placeholder": {
     color: "$gray400"
   }
 });
 
 // src/components/TextInput/index.tsx
 import { jsx as jsx4, jsxs as jsxs3 } from "react/jsx-runtime";
-function TextInput(_a) {
-  var _b = _a, { prefix } = _b, props = __objRest(_b, ["prefix"]);
-  return /* @__PURE__ */ jsxs3(TextInputContainer, { children: [
-    !!prefix && /* @__PURE__ */ jsx4(Prefix, { children: prefix }),
-    /* @__PURE__ */ jsx4(Input, __spreadValues({}, props))
-  ] });
-}
+var TextInput = forwardRef(
+  (_a, ref) => {
+    var _b = _a, { prefix } = _b, props = __objRest(_b, ["prefix"]);
+    return /* @__PURE__ */ jsxs3(TextInputContainer, { children: [
+      !!prefix && /* @__PURE__ */ jsx4(Prefix, { children: prefix }),
+      /* @__PURE__ */ jsx4(Input, __spreadValues({ ref }, props))
+    ] });
+  }
+);
 TextInput.displayName = "TextInput";
 export {
   Avatar2 as Avatar,
@@ -503,5 +523,13 @@ export {
   MultiStep,
   Text,
   TextArea,
-  TextInput
+  TextInput,
+  config,
+  createTheme,
+  css,
+  getCssText,
+  globalCss,
+  keyframes,
+  styled,
+  theme
 };
